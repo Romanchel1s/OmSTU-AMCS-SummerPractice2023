@@ -23,4 +23,4 @@ jobs:
         run: dotnet build ./spacebattle --no-restore /p:ContinuousIntegrationBuild=true
 
       - name: Test
-        run: cd SpaceBattleTest && dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura  
+        run: cd spacebattletest && dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura  
