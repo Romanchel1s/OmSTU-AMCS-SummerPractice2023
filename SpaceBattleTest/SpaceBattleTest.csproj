@@ -13,6 +13,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="FluentAssertions" Version="6.11.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
     <PackageReference Include="SpecFlow.XUnit" Version="3.9.74" />
     <PackageReference Include="xunit" Version="2.4.2" />
@@ -27,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\spacebattle\spacebattle.csproj" />
+    <ProjectReference Include="..\SpaceBattleLib\spacebattle.csproj" />
   </ItemGroup>
 
 </Project>
