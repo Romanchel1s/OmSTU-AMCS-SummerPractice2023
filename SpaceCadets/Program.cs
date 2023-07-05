@@ -10,39 +10,6 @@ class Student
 
 class Program
 {
-    static void Main(string[] args)
-    {
-        string inputFilePath = args[0]; 
-        string outputFilePath = args[1]; 
-
-        string jsonData = File.ReadAllText(inputFilePath);
-        dynamic input = JsonConvert.DeserializeObject(jsonData) ?? new JObject();
-
-        List<Student> students = input.data.ToObject<List<Student>>();
-        string taskName = input.taskName;
-        List<dynamic> answer;
-        
-        switch (taskName){
-            case "GetStudentsWithHighestGPA":
-                answer = GetStudentsWithHighestGPA(students);
-                break;
-            case "CalculateGPAByDiscipline":
-                answer = CalculateGPAByDiscipline(students);
-                break;
-            case "GetBestGroupsByDiscipline":
-                answer = GetBestGroupsByDiscipline(students);
-                break;
-            default:
-                answer = new List<dynamic>();
-                break;
-        } 
-        var result = new { Response = answer };
-
-        string outputJson = JsonConvert.SerializeObject(result, Formatting.Indented);
-
-        File.WriteAllText(outputFilePath, outputJson);
-    }
-
     static List<dynamic> GetStudentsWithHighestGPA(List<Student> students)
     {
         double highestGPA = students.Max(s => s.Mark);
@@ -84,5 +51,38 @@ class Program
         .ToList<dynamic>();
 
         return bestGroupsByDiscipline;
-    }   
+    }
+        static void Main(string[] args)
+    {
+        string inputFilePath = args[0]; 
+        string outputFilePath = args[1]; 
+
+        string jsonData = File.ReadAllText(inputFilePath);
+        dynamic input = JsonConvert.DeserializeObject(jsonData) ?? new JObject();
+
+        List<Student> students = input.data.ToObject<List<Student>>();
+        string taskName = input.taskName;
+        List<dynamic> answer;
+        
+        switch (taskName){
+            case "GetStudentsWithHighestGPA":
+                answer = GetStudentsWithHighestGPA(students);
+                break;
+            case "CalculateGPAByDiscipline":
+                answer = CalculateGPAByDiscipline(students);
+                break;
+            case "GetBestGroupsByDiscipline":
+                answer = GetBestGroupsByDiscipline(students);
+                break;
+            default:
+                answer = new List<dynamic>();
+                break;
+        } 
+        var result = new { Response = answer };
+
+        string outputJson = JsonConvert.SerializeObject(result, Formatting.Indented);
+
+        File.WriteAllText(outputFilePath, outputJson);
+    }
+   
 }
